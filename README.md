@@ -1,0 +1,83 @@
+#**Tarea 4**
+
+ ##**Que es un Patron de Diseo?**
+ Los patrones de diseo son la base para la busqueda de soluciones a problemas comunes en el desarrollo de software y otros ambitos referentes al diseo de interaccion o interfaces.
+ Un patron de diseo resulta ser una solucion a un problema de diseo. Para que una solucion sea considerada un patron debe poseer ciertas caracteristicas. Una de ellas es que debe haber comprobado su efectividad resolviendo problemas similares en ocasiones anteriores. Otra es que debe ser reutilizable, lo que significa que es aplicable a diferentes problemas de diseo en distintas circunstancias.
+
+ ###**Objetivos de los patrones**
+ Los patrones de diseo pretenden:
+ * Proporcionar catalogos de elementos reusables en el diseo de sistemas software.
+ * Evitar la reiteracion en la busqueda de soluciones a problemas ya conocidos y solucionados anteriormente.
+ * Formalizar un vocabulario comun entre diseadores.
+ * Estandarizar el modo en que se realiza el diseo.
+ * Facilitar el aprendizaje de las nuevas generaciones de diseadores condensando conocimiento ya existente.
+
+ Asimismo, no pretenden:
+ * Imponer ciertas alternativas de diseo frente a otras.
+ * Eliminar la creatividad inherente al proceso de diseo.
+ No es obligatorio utilizar los patrones, solo es aconsejable en el caso de tener el mismo problema o similar que soluciona el patron, siempre teniendo en cuenta que en un caso particular puede no ser aplicable. *Abusar o forzar el uso de los patrones puede ser un error*.
+
+ ##**En Que consiste el patron singleton?**
+ En ingeniera de software, el patron singleton (instancia unica en ingles) es un patron de diseo diseado para restringir la creacion de objetos pertenecientes a una clase o el valor de un tipo a un unico objeto.
+ Su intencion consiste en garantizar que una clase solo tenga una instancia y proporcionar un punto de acceso global a ella.
+ El patron singleton se implementa creando en nuestra clase un metodo que crea una instancia del objeto solo si todavia no existe alguna. Para asegurar que la clase no puede ser instanciada nuevamente se regula el alcance del constructor (con modificadores de acceso como protegido o privado).
+ La instrumentacion del patron puede ser delicada en programas con multiples hilos de ejecucion. Si dos hilos de ejecucion intentan crear la instancia al mismo tiempo y esta no existe todavia, solo uno de ellos debe lograr crear el objeto. La solucion clasica para este problema es utilizar exclusion mutua en el metodo de creacion de la clase que implementa el patron.
+ Las situaciones mas habituales de aplicacion de este patron son aquellas en las que dicha clase controla el acceso a un recurso fisico unico (como puede ser el raton o un archivo abierto en modo exclusivo) o cuando cierto tipo de datos debe estar disponible para todos los demas objetos de la aplicacion.
+ El patron singleton provee una unica instancia global gracias a que:
+ * La propia clase es responsable de crear la unica instancia.
+ * Permite el acceso global a dicha instancia mediante un metodo de clase.
+ * Declara el constructor de clase como privado para que no sea instanciable directamente.
+
+ ##**En que consiste el patron Factory?**
+ En diseno de software, el patron de diseno Factory Method consiste en utilizar una clase constructora (al estilo del Abstract Factory) abstracta con unos cuantos mtodos definidos y otro(s) abstracto(s): el dedicado a la construccion de objetos de un subtipo de un tipo determinado. Es una simplificacion del Abstract Factory, en la que la clase abstracta tiene metodos concretos que usan algunos de los abstractos; segun usemos una u otra hija de esta clase abstracta, tendremos uno u otro comportamiento.
+ ###**Estructura**
+ Las clases principales en este patron son el creador y el producto. El creador necesita crear instancias de productos, pero el tipo concreto de producto no debe ser forzado en las subclases del creador, porque las posibles subclases del creador deben poder especificar subclases del producto para utilizar.
+ ![alt text](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#images)
+ La solucion para esto es hacer un metodo abstracto (el metodo de la fabrica) que se define en el creador. Este metodo abstracto se define para que devuelva un producto. Las subclases del creador pueden sobrescribir este metodo para devolver subclases apropiadas del producto.
+
+ ##**En que consiste el patron Builder?**
+ Como Patron de diseno, el patron builder (Constructor) es usado para permitir la creacion de una variedad de objetos complejos desde un objeto fuente (Producto), el objeto fuente se compone de una variedad de partes que contribuyen individualmente a la creacion de cada objeto complejo a traves de un conjunto de llamadas a interfaces comunes de la clase Abstract Builder.
+ El patron builder es creacional.
+ A menudo, el patron builder construye el patron Composite, un patron estructural.
+ Intencion: Abstrae el proceso de creacion de un objeto complejo, centralizando dicho proceso en un unico punto, de tal forma que el mismo proceso de construccion pueda crear representaciones diferentes.
+
+###**Diagrama de Clases**
+ * Builder
+ * interfaz abstracta para crear productos.
+ * Concrete Builder
+ * implementacion del Builder
+ * construye y reune las partes necesarias para construir los productos
+ * Director
+ * construye un objeto usando el patron Builder
+ * Producto
+ * El objeto complejo bajo construccion
+
+ ![alt text](https://upload.wikimedia.org/wikipedia/commons/f/f3/Builder_UML_class_diagram.svg)
+
+ ##**ADB de Android**
+ Las siglas ADB significan Android Debug Bridge y se corresponden con una herramienta de software que nos permite interactuar con nuestro smartphone Android desde un ordenador. Asi, por ejemplo, a traves de ADB podemos ejecutar comandos para copiar archivos desde el ordenador al telefono o viceversa, flashear un revocery o el firmware completo e incluso reiniciar el dispositivo en modo recovery. 
+ Basicamente, en el ADB es la manera de cambiar profundamente el software de nuestro smartphone o por lo menos acceder a el. Por supuesto, todo esto se hace posible a traves de un cable USB con el que conectamos el smartphone al ordenador. 
+
+ ##**Para que sirve el operador final en JAVA** 
+ ###**FINAL:**
+ Indica que una variable, metodo o clase no se va a modificar, lo cual puede ser util para anadir mas semantica, por cuestiones de rendimiento, y para detectar errores.
+
+ * Si una variable se marca como final, no se podra asignar un nuevo valor a la variable.
+ * Si una clase se marca como final, no se podra extender la clase.
+ * si es un metodo el que se declara como final, no se podra sobreescribir.
+ Algo muy a tener en cuenta a la hora de utilizar este modificador es que si es un objeto lo que hemos marcado como final, esto no nos impedira modificar el objeto en si, sino tan solo usar el operador de asignacion para cambiar la referencia.
+
+ ##**Que Lenguajes soportan Sobre Carga de operadores?**
+ **C++, C# y PYTHON**
+
+ ##**Gradle**
+ Gradle es una herramienta para automatizar la construccion de nuestros proyectos, por ejemplo las tareas de compilacion, testing, empaquetado y el despliegue de los mismos. Es muy flexible para la configuracion, pero ademas ya tiene armadas las tareas para las mayoria de los proyectos por default. Esta herramienta es usado por grandes proyecto **Open Source como Spring, Hibernate, y Grails. (Tambien lo usan empresas como LinkedIn para sus proyectos)**
+
+ ##**Inyeccion de dependencias en desarrollo de software** 
+  La inyeccion de dependencias es un patron de diseno de software usado en la Programacion Orientada a Objetos, que trata de solucionar las necesidades de creacion de los objetos de una manera practica, util, escalable y con una alta versatilidad del codigo.
+   En la mayoria de los frameworks actuales se aplica la Inyeccion de dependencias como parte de las herramientas y modelos que facilitan al programador. Como cualquier patron de diseno de software trata de solucionar de una manera elegante un problema habitual en el desarrollo de software, por lo que tambien es idoneo utilizar este patron en el desarrollo de proyectos a pequena escala.
+
+   ###**Que es la inyeccion de dependencias**
+    Aparte de un patron de diseno de software, vamos a explicar que idea hay detras de ese nombre. Este patron, como muchos otros, nos ayuda a separar nuestro codigo por responsabilidades, siendo que en esta ocasion solo se dedica a organizar el codigo que tiene que ver con la creacion de los objetos.
+     Como ya sabemos, uno de los principios basicos de la programacion, y de las buenas practicas, es la separacion del codigo por responsabilidades. Pues la inyeccion de dependencias parte de ahi.
+      En el codigo de una aplicacion con OOP (Programacin Orientada a Objetos) tenemos una posible separacion del codigo en dos partes, una en la que creamos los objetos y otra en la que los usamos. Existen patrones como las factorias que tratan esa parte, pero la inyeccion de dependencias va un poco mas alla. Lo que dice es que los objetos nunca deben construir aquellos otros objetos que necesitan para funcionar. Esa parte de creacion de los objetos se debe hacer en otro lugar diferente a la inicializacion de un objeto.
